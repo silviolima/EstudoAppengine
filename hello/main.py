@@ -19,7 +19,7 @@ import webapp2
 
 class MainHandler(webapp2.RequestHandler):
     def get(self):
-        self.response.write('Hello world!')
+        self.response.write('Hello world Pycharm !')
 
 
 class OutroHandler(webapp2.RequestHandler):
@@ -30,7 +30,7 @@ class ParametrosHandler(webapp2.RequestHandler):
     def get(self):
         nome = self.request.get('nome')
         sobrenome = self.request.get('sobrenome')
-        self.response.write('Ola %s %s!' % (nome, sobrenome))
+        self.response.write('Ola {0:s} {1:s}!'.format(nome.capitalize(), sobrenome.capitalize()))
 
 class RedirecionaParaOutroHandler(webapp2.RequestHandler):
     def get(self):
@@ -39,6 +39,8 @@ class RedirecionaParaOutroHandler(webapp2.RequestHandler):
 class GoogleHandler(webapp2.RequestHandler):
     def get(self):
         self.redirect(str('http://www.google.com'))
+
+
 
 
 app = webapp2.WSGIApplication([('/', MainHandler),('/outra', OutroHandler),('/redirecionar', RedirecionaParaOutroHandler),('/google', GoogleHandler),('/parametros', ParametrosHandler)],
